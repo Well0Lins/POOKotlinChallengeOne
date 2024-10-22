@@ -1,0 +1,31 @@
+
+abstract class Animal(val name: String) {
+    abstract fun makeSound(): String
+}
+
+
+class Dog(name: String) : Animal(name) {
+    override fun makeSound(): String {
+        return "Woof!"
+    }
+}
+
+
+class Cat(name: String) : Animal(name) {
+    override fun makeSound(): String {
+        return "Meow!"
+    }
+}
+
+
+fun animalSounds(animals: List<Animal>) {
+    for (animal in animals) {
+        println("${animal.name} says: ${animal.makeSound()}")
+    }
+}
+
+
+fun main() {
+    val animals: List<Animal> = listOf(Dog("Buddy"), Cat("Whiskers"))
+    animalSounds(animals)
+}

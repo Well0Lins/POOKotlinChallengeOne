@@ -1,0 +1,36 @@
+class BankAccount(var accountHolder: String) {
+
+    private var _balance: Double = 0.0
+
+    
+    val balance: Double
+        get() = _balance
+
+    fun deposit(amount: Double) {
+        if (amount > 0) {
+            _balance += amount
+            println("Deposit of $amount successful. New balance: $balance")
+        } else {
+            println("Deposit amount must be positive.")
+        }
+    }
+
+    
+    fun withdraw(amount: Double) {
+        if (amount > 0 && amount <= _balance) {
+            _balance -= amount
+            println("Withdrawal of $amount successful. New balance: $balance")
+        } else {
+            println("Insufficient funds or invalid withdrawal amount.")
+        }
+    }
+}
+
+
+fun main() {
+    val account = BankAccount("Alice")
+    account.deposit(100.0)  // Depósito de 100
+    account.withdraw(30.0)   // Saque de 30
+    account.withdraw(80.0)   // Tentativa de saque com saldo insuficiente
+    println("Final balance: ${account.balance}")  // Exibir saldo final
+}
